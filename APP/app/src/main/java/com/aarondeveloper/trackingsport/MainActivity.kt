@@ -1,47 +1,96 @@
 package com.aarondeveloper.trackingsport
 
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.view.View
+import android.webkit.CookieManager
+import android.webkit.WebChromeClient
+import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import android.webkit.WebResourceError
+import android.webkit.WebResourceRequest
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.aarondeveloper.trackingsport.ui.theme.TrackingSportTheme
+import android.widget.ProgressBar
+import com.aarondeveloper.trackingsport.presentation.TrackingSportConnFallida
+import com.aarondeveloper.trackingsport.presentation.isConnectedToInternet
 
 class MainActivity : ComponentActivity() {
+    private var webView: WebView? = null
+    private lateinit var progressBar: ProgressBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            TrackingSportTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+        setContentView(R.layout.activity_main)
+
+        webView = findViewById(R.id.webview)
+        progressBar = findViewById(R.id.progressBar)
+
+        limpiarDatosWebView()
+        setupWebView()
+
+        if (isConnectedToInternet(this)) {
+            webView?.loadUrl("https://trackingsport.000.pe/")
+        } else {
+            mostrarVistaOffline()
+        }
+    }
+
+    private fun setupWebView() {
+        webView?.settings?.javaScriptEnabled = true
+        webView?.settings?.cacheMode = WebSettings.LOAD_NO_CACHE
+        webView?.clearCache(true)
+
+        webView?.webViewClient = object : WebViewClient() {
+            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+                progressBar.visibility = View.VISIBLE
+                progressBar.progress = 0
+            }
+
+            override fun onPageFinished(view: WebView?, url: String?) {
+                progressBar.visibility = View.GONE
+                if (!isConnectedToInternet(this@MainActivity)) {
+                    mostrarVistaOffline()
+                }
+            }
+
+        }
+        webView?.webChromeClient = object : WebChromeClient() {
+            override fun onProgressChanged(view: WebView?, newProgress: Int) {
+                progressBar.progress = newProgress
+                if (newProgress == 100) {
+                    progressBar.visibility = View.GONE
+                } else {
+                    progressBar.visibility = View.VISIBLE
                 }
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    private fun limpiarDatosWebView() {
+        webView?.clearCache(true)
+        CookieManager.getInstance().removeAllCookies(null)
+        CookieManager.getInstance().flush()
+        WebView(this).clearFormData()
+        WebView(this).clearHistory()
+        WebView(this).clearSslPreferences()
+        deleteDatabase("webview.db")
+        deleteDatabase("webviewCache.db")
+    }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    TrackingSportTheme {
-        Greeting("Android")
+    private fun mostrarVistaOffline() {
+        progressBar.visibility = View.GONE
+        setContent {
+            TrackingSportConnFallida()
+        }
+    }
+
+    override fun onBackPressed() {
+        if (webView != null && webView!!.canGoBack()) {
+            webView!!.goBack()
+        } else {
+            super.onBackPressed()
+        }
     }
 }
