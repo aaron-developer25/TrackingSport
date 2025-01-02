@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking Sport</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="../../../resources/css/aarondeveloper.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <div class="cargando-mini-contenedor">
+        <img class="cargando-mini" src="../../../resources/imagenes/cargandomini.gif" alt="Cargando...">
+    </div>
+
+    <div class="container">
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="gp">Juegos Jugados</h2>
+                <p id="gpValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('gpValue', 'gp')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('gpValue', 'gp')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="w">Ganados</h2>
+                <p id="wValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('wValue', 'w')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('wValue', 'w')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="l">Perdidos</h2>
+                <p id="lValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('lValue', 'l')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('lValue', 'l')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="wp">Porcentaje de Victorias</h2>
+                <p id="wpValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('wpValue', 'wp')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('wpValue', 'wp')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="ppg">Puntos por Partido</h2>
+                <p id="ppgValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('ppgValue', 'ppg')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('ppgValue', 'ppg')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="papg">Puntos Permitidos por Partido</h2>
+                <p id="papgValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('papgValue', 'papg')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('papgValue', 'papg')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="pd">Diferencia de Puntos</h2>
+                <p id="pdValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('pdValue', 'pd')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('pdValue', 'pd')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="hr">Récord en Casa</h2>
+                <p id="hrValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('hrValue', 'hr')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('hrValue', 'hr')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="ar">Récord de Visitante</h2>
+                <p id="arValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('arValue', 'ar')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('arValue', 'ar')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="r">Racha</h2>
+                <p id="rValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('rValue', 'r')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('rValue', 'r')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="pc">Posición en Conferencia</h2>
+                <p id="pcValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('pcValue', 'pc')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('pcValue', 'pc')">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-card">
+        <h4 id="nombreEquipo">{TÍTULO EQUIPO}</h4>
+        <p id="descripcionEquipo">{DESCRIPCIÓN}</p>
+        <p id="paisEquipo">{PAÍS}</p>
+    </div>
+
+    <script src="../../../resources/config/config.js"></script>
+    <script src="../../../resources/librery/toastr/toastr.min.js"></script>
+    <script src="../../../resources/services/JugadoresService.js"></script>
+    <script src="../../../resources/services/EquiposService.js"></script>
+    <script src="../../../resources/services/EstadisticaEquiposService.js"></script>
+    <script src="../../../resources/services/AlmacenamientoServices.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking Sport - Jugadores</title>
+    <link rel="stylesheet" href="../../resources/css/aarondeveloper.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <div class="cargando-mini-contenedor">
+        <img class="cargando-mini" src="../../resources/imagenes/cargandomini.gif" alt="Cargando...">
+    </div>
+
+    <div class="container">
+        <div class="tarjeta-lista">
+            <div class="sistemas-container">
+            </div>
+        </div>
+
+        <div class="mensaje-personalizado" style="display:none;">
+            <img src="../../resources/imagenes/ico_busqueda.png" alt="NO SE ENCONTRARON JUGADORES" class="img-no-encontrado">
+            <p>NO SE ENCONTRARON JUGADORES</p>
+        </div>
+
+        <button class="btn-flotante" onclick="crear()">+</button>
+    </div>
+
+    <script src="../../resources/config/config.js"></script>
+    <script src="../../resources/librery/toastr/toastr.min.js"></script>
+    <script src="../../resources/services/EquiposService.js"></script> 
+    <script src="../../resources/services/JugadoresService.js"></script> 
+    <script src="../../resources/services/AlmacenamientoServices.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

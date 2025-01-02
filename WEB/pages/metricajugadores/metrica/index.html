@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking Sport</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="../../../resources/css/aarondeveloper.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <div class="cargando-mini-contenedor">
+        <img class="cargando-mini" src="../../../resources/imagenes/cargandomini.gif" alt="Cargando...">
+    </div>
+
+
+    <div class="container">
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="ppg">Punto por Jugador</h2>
+                <p id="ppgValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('ppgValue', 'ppg')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('ppgValue', 'ppg')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="apg">Asistencia por Jugador</h2>
+                <p id="apgValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('apgValue', 'apg')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('apgValue', 'apg')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="rpg">Rebotes por juego</h2>
+                <p id="rpgValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('rpgValue', 'rpg')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('rpgValue', 'rpg')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="spg">Robos por juego</h2>
+                <p id="spgValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('spgValue', 'spg')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('spgValue', 'spg')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="bpg">Bloqueos por juego</h2>
+                <p id="bpgValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('bpgValue', 'bpg')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('bpgValue', 'bpg')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="fg">Porcentaje de tiros de campo</h2>
+                <p id="fgValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('fgValue', 'fg')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('fgValue', 'fg')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="tresp">Porcentaje de triples</h2>
+                <p id="trespValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('trespValue', 'tresp')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('trespValue', 'tresp')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="ft">Porcentaje de tiros libres</h2>
+                <p id="ftValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('ftValue', 'ft')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('ftValue', 'ft')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="mpg">Minutos por juego</h2>
+                <p id="mpgValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('mpgValue', 'mpg')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('mpgValue', 'mpg')">+</button>
+            </div>
+        </div>
+        <div class="card border-azul">
+            <div class="card-body">
+                <h2 id="to">Pérdidas de balón</h2>
+                <p id="toValue">0</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-minus" onclick="decrementar('toValue', 'to')">-</button>
+                <button class="btn btn-plus" onclick="incrementar('toValue', 'to')">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-card">
+        <h4 id="nombreJugador">{NOMBRE JUGADOR}</h4>
+        <p id="equipoJugador">{EQUIPO}</p>
+        <p id="nacionalidadJugador">{NACIONALIDAD}</p>
+    </div>
+
+    <script src="../../../resources/config/config.js"></script>
+    <script src="../../../resources/librery/toastr/toastr.min.js"></script>
+    <script src="../../../resources/services/JugadoresService.js"></script>
+    <script src="../../../resources/services/EquiposService.js"></script>
+    <script src="../../../resources/services/EstadisticaJugadoresService.js"></script>
+    <script src="../../../resources/services/AlmacenamientoServices.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

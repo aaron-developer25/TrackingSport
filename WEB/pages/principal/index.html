@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking Sport</title>
+    <link rel="icon" type="image/png" href="../../resources/imagenes/TrackingSportOficial.png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button class="menu-button" onclick="abrirMenu()">
+                <img src="../../resources/imagenes/ico_menu.png" alt="Menu Icon" class="menu-icon">
+                Menú
+            </button>
+
+            <div class="title-section">
+                <h1 id="tituloPrincipal">Dashboard</h1>
+                <p id="descripcionPrincipal">Datos recientes</p>
+            </div>
+        </div>
+
+         <iframe class="content-iframe" src="" frameborder="0"></iframe>
+    </div>
+
+    <div class="drawer-background" id="drawer-background" onclick="cerrarMenu()"></div>
+    <div class="drawer" id="drawer">
+        <div class="drawer-header">
+            <img src="../../resources/imagenes/TrackingSportOficial.png" alt="Logotipo">
+            <div class="version-text">v 1.0.0</div>
+        </div>
+        <div class="drawer-body">
+            <div class="menu-item" onclick="seleccionarOpcionMenu('dashboard')">
+                <ion-icon name="home-outline"></ion-icon>
+                <span>Dashboard</span>
+            </div>
+            <div class="menu-item" onclick="seleccionarOpcionMenu('partidos')">
+                <ion-icon name="calendar-outline"></ion-icon>
+                <span>Partidos</span>
+            </div>
+            <div class="menu-item" onclick="seleccionarOpcionMenu('equipos')">
+                <ion-icon name="people-outline"></ion-icon>
+                <span>Equipos</span>
+            </div>
+            <div class="menu-item" onclick="seleccionarOpcionMenu('jugadores')">
+                <ion-icon name="football-outline"></ion-icon>
+                <span>Jugadores</span>
+            </div>
+            <div class="menu-item" onclick="seleccionarOpcionMenu('metricaequipos')">
+                <ion-icon name="bar-chart-outline"></ion-icon>
+                <span>Metrica Equipos</span>
+            </div>
+            <div class="menu-item" onclick="seleccionarOpcionMenu('metricajugadores')">
+                <ion-icon name="pie-chart-outline"></ion-icon>
+                <span>Metrica Jugadores</span>
+            </div>
+            <div class="menu-item" onclick="seleccionarOpcionMenu('ajustes')">
+                <ion-icon name="settings-outline"></ion-icon>
+                <span>Ajustes</span>
+            </div>
+            <div class="menu-item" onclick="seleccionarOpcionMenu('informacion')">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                <span>Información</span>
+            </div>
+            <div class="divider"></div>
+            <div class="menu-item" onclick="seleccionarOpcionMenu('salir')">
+                <ion-icon name="log-out-outline"></ion-icon>
+                <span>Salir</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
